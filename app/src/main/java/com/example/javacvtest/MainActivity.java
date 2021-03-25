@@ -20,16 +20,21 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.core.CameraX;
 import androidx.camera.core.ImageAnalysis;
-import androidx.camera.core.ImageAnalysisConfig;
+// import androidx.camera.core.ImageAnalysisConfig;
+import androidx.camera.core.impl.ImageAnalysisConfig;
 import androidx.camera.core.ImageProxy;
 import androidx.camera.core.Preview;
-import androidx.camera.core.PreviewConfig;
+// import androidx.camera.core.PreviewConfig;
+import androidx.camera.core.impl.PreviewConfig;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import org.bytedeco.javacpp.Pointer;
-import org.bytedeco.javacpp.opencv_core;
-import org.bytedeco.javacpp.opencv_face;
+import org.bytedeco.opencv.opencv_core;
+import org.bytedeco.opencv.opencv_face;
+// import org.bytedeco.javacpp.opencv_core;
+// import org.bytedeco.opencv.opencv_face;
+
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
@@ -126,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
     private void initializeOpenCVDependencies() {
 
         try {
-            InputStream is = getResources().openRawResource(R.raw.lbpcascade_frontalface);
+            InputStream is = getResources().openRawResource(R.raw.haarcascade_frontalface_alt);
             File cascadeDir = getDir("cascade", Context.MODE_PRIVATE);
             File mCascadeFile = new File(cascadeDir, "cascade.xml");
             FileOutputStream os = new FileOutputStream(mCascadeFile);
@@ -181,7 +186,8 @@ public class MainActivity extends AppCompatActivity {
         Rational aspectRatio = new Rational(textureView.getWidth(), textureView.getHeight());
         android.util.Size screen = new android.util.Size(textureView.getWidth(), textureView.getHeight());
 
-        PreviewConfig pConfig = new PreviewConfig.Builder().setTargetAspectRatio(aspectRatio).setTargetResolution(screen).build();
+     PreviewConfig pConfig = new PreviewConfig.Builder().setTargetAspectRatio(aspectRatio).setTargetResolution(screen).build();
+     //   PreviewConfig pConfig = new Preview.Builder().setTargetAspectRatio(aspectRatio).setTargetResolution(screen).build();
         Preview preview = new Preview(pConfig);
 
         preview.setOnPreviewOutputUpdateListener(

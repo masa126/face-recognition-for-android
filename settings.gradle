@@ -1,3 +1,5 @@
+include ':opencv-3.4.3-1.4.3'
+include ':javacpp-1.4.3'
 rootProject.name='JavaCVTest'
 include ':app'
 include ':openCVLibrary343'
